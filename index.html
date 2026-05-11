@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Syntra — capture tasks by voice, build habits that stick. AI-powered productivity for iOS and Android." />
+  <meta name="theme-color" content="#0E0F12" />
+  <title>Syntra — Voice-first tasks, habits, and events</title>
+  <link rel="icon" href="syntra-logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="syntra-logo.png" />
+  <link rel="stylesheet" href="styles.css?v=3" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand">
+        <span>SYNTRA</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="syntra-logo.png" alt="Syntra logo" class="logo" />
+      <h1>Capture tasks by voice.<br />Build habits that stick.</h1>
+      <p>Talk and Syntra parses what you said into tasks, events, or habits. Calendar, streaks, and analytics all in one place.</p>
+
+      <div class="download-row">
+        <a href="#" class="store-btn" aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04a4.85 4.85 0 0 1 2.32-4.07 5 5 0 0 0-3.94-2.13c-1.66-.17-3.27 1-4.12 1-.86 0-2.16-.97-3.56-.95a5.25 5.25 0 0 0-4.43 2.7c-1.9 3.3-.49 8.16 1.36 10.83.91 1.31 2 2.78 3.42 2.73 1.38-.06 1.9-.89 3.57-.89 1.66 0 2.13.89 3.57.86 1.48-.03 2.42-1.32 3.32-2.65a11.09 11.09 0 0 0 1.5-3.07 4.7 4.7 0 0 1-3.01-4.36zm-2.71-7.95a4.66 4.66 0 0 0 1.07-3.34 4.74 4.74 0 0 0-3.07 1.59 4.4 4.4 0 0 0-1.1 3.22 3.93 3.93 0 0 0 3.1-1.47z"/></svg>
+          <div class="store-btn-text">
+            <div class="store-btn-small">Download on the</div>
+            <div class="store-btn-big">App Store</div>
+          </div>
+        </a>
+        <a href="#" class="store-btn" aria-label="Get it on Google Play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.4l11.4 9.6L3.6 21.6c-.3-.2-.5-.5-.5-.9V3.3c0-.4.2-.7.5-.9zm12.5 10.5l3.7 3.1c.7.6.7 1.6 0 2.2-.1.1-.2.1-.2.2L4.5 23l11.6-10.1zm0-1.8L4.5 1c.4-.1.8 0 1.2.2l13.7 7.5c.7.4 1 1.3.7 2-.1.3-.4.5-.6.7l-3.4 2.7zm-12.7-9c.1 0 .1 0 .2 0L15 11.7 3.4 21.7c0-.1-.1-.2-.1-.4V3.3c0-.5.1-.8.4-1.2z"/></svg>
+          <div class="store-btn-text">
+            <div class="store-btn-small">Get it on</div>
+            <div class="store-btn-big">Google Play</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Real screenshots — center-focused infinite carousel. The
+       middle card is sharp + full-size; left/right peeks are blurred
+       and dimmed. Items are cloned 3x in the DOM so we can silently
+       jump scroll position when the user nears either edge, giving
+       the appearance of forever-scrolling in either direction.
+       Drag/swipe to advance; arrow buttons step one card with a
+       smooth animation. -->
+  <section class="screenshots-section">
+    <div class="screenshots-header">
+      <div>
+        <h2 class="section-title">See it in action</h2>
+        <p class="section-sub" style="margin-bottom: 0;">Five screens, one app. Scroll through to see how Syntra fits into your day.</p>
+      </div>
+      <div class="screenshots-arrows" aria-hidden="true">
+        <button class="scroll-arrow" data-dir="-1" aria-label="Previous screenshot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="scroll-arrow" data-dir="1" aria-label="Next screenshot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="screenshots-wrap" id="screenshots-wrap">
+      <div class="screenshots" id="screenshots-track">
+        <figure class="phone-card">
+          <div class="phone phone-shot">
+            <img src="screenshots/mic.png?v=2" alt="Voice capture screen" />
+          </div>
+          <h3>Voice capture</h3>
+          <p>Just talk. Syntra hears "remind me to call mom at 5:30" and turns it into a real reminder — no typing needed.</p>
+        </figure>
+        <figure class="phone-card">
+          <div class="phone phone-shot">
+            <img src="screenshots/day.png?v=2" alt="Day view with tasks" />
+          </div>
+          <h3>Your day</h3>
+          <p>Every dated task and event for the day, sorted by time. Tap the circle to check it off; completed items strike through and sink to the bottom.</p>
+        </figure>
+        <figure class="phone-card">
+          <div class="phone phone-shot">
+            <img src="screenshots/todos.png?v=2" alt="To-do list" />
+          </div>
+          <h3>To-do list</h3>
+          <p>The undated stuff lives here. Add by voice or by hand, edit with a tap, and pull anything you've checked off back from the archive.</p>
+        </figure>
+        <figure class="phone-card">
+          <div class="phone phone-shot">
+            <img src="screenshots/habits.png?v=2" alt="Habit tracker with streaks" />
+          </div>
+          <h3>Habits &amp; streaks</h3>
+          <p>Track up to a dozen habits with daily check-ins. The 7-day strip on each card shows your last week at a glance — color-coded so they don't blur together.</p>
+        </figure>
+        <figure class="phone-card">
+          <div class="phone phone-shot">
+            <img src="screenshots/analytics.png?v=2" alt="Habit analytics" />
+          </div>
+          <h3>Habit analytics</h3>
+          <p>Today, yesterday, last 7 days, last 30 days — see exactly how often each habit fires. The 30-day grid surfaces patterns and slip-ups you'd otherwise miss.</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Center-focused, infinite-scroll carousel.
+    //
+    //   1. Clone the 5 cards twice so the track has 3 identical
+    //      batches in the DOM (15 cards total).
+    //   2. Initialise scrollLeft to the middle batch — the first
+    //      thing the user sees is centered on the same card they'd
+    //      see in a non-infinite layout.
+    //   3. On every scroll, the card whose center is closest to the
+    //      viewport's center gets .active. CSS uses .active to
+    //      remove the blur, scale up, and brighten.
+    //   4. When the user pans into the first or third batch, jump
+    //      scrollLeft by ±batchWidth silently. Because the same
+    //      cards exist at +/- batchWidth, the user can't tell.
+    (function () {
+      var wrap = document.getElementById("screenshots-wrap");
+      var track = document.getElementById("screenshots-track");
+      if (!wrap || !track) return;
+
+      var ORIGINALS = Array.prototype.slice.call(track.children);
+      var N = ORIGINALS.length;
+
+      // Clone twice → 3 batches.
+      for (var copy = 0; copy < 2; copy++) {
+        ORIGINALS.forEach(function (el) {
+          track.appendChild(el.cloneNode(true));
+        });
+      }
+
+      var allCards = Array.prototype.slice.call(track.children);
+
+      function batchWidth() {
+        // Distance from card[0] to card[N] in pixels — i.e. one
+        // full batch width including gaps.
+        if (allCards.length <= N) return 0;
+        return allCards[N].offsetLeft - allCards[0].offsetLeft;
+      }
+
+      function targetForCard(card) {
+        return card.offsetLeft - wrap.clientWidth / 2 + card.clientWidth / 2;
+      }
+
+      // ─── Infinite-loop boundary jumps ───
+      var isJumping = false;
+      function maybeJump() {
+        if (isJumping) return;
+        var bw = batchWidth();
+        if (!bw) return;
+        var middleStart = targetForCard(allCards[N]);
+        var x = wrap.scrollLeft;
+        if (x < middleStart - bw * 0.5) {
+          isJumping = true;
+          // Disable smooth-scroll for the jump itself.
+          wrap.style.scrollBehavior = "auto";
+          wrap.scrollLeft = x + bw;
+          requestAnimationFrame(function () {
+            wrap.style.scrollBehavior = "";
+            isJumping = false;
+          });
+        } else if (x > middleStart + bw * 0.5) {
+          isJumping = true;
+          wrap.style.scrollBehavior = "auto";
+          wrap.scrollLeft = x - bw;
+          requestAnimationFrame(function () {
+            wrap.style.scrollBehavior = "";
+            isJumping = false;
+          });
+        }
+      }
+
+      // ─── Active-card detection ───
+      function updateActive() {
+        var wrapRect = wrap.getBoundingClientRect();
+        var center = wrapRect.left + wrapRect.width / 2;
+        var bestCard = null;
+        var bestDistance = Infinity;
+        allCards.forEach(function (card) {
+          var rect = card.getBoundingClientRect();
+          var cardCenter = rect.left + rect.width / 2;
+          var distance = Math.abs(cardCenter - center);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestCard = card;
+          }
+        });
+        allCards.forEach(function (c) {
+          c.classList.toggle("active", c === bestCard);
+        });
+      }
+
+      var raf = 0;
+      wrap.addEventListener("scroll", function () {
+        maybeJump();
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(updateActive);
+      });
+
+      // ─── Arrow buttons ───
+      document.querySelectorAll(".scroll-arrow").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var dir = parseInt(btn.getAttribute("data-dir"), 10) || 1;
+          var card = wrap.querySelector(".phone-card");
+          if (!card) return;
+          var cardW = card.getBoundingClientRect().width;
+          var styles = getComputedStyle(track);
+          var gap = parseInt(styles.columnGap || styles.gap || "0", 10) || 24;
+          wrap.scrollBy({ left: dir * (cardW + gap), behavior: "smooth" });
+        });
+      });
+
+      // ─── Init ───
+      function init() {
+        if (allCards.length <= N) return;
+        // Land on first card of middle batch.
+        wrap.style.scrollBehavior = "auto";
+        wrap.scrollLeft = targetForCard(allCards[N]);
+        wrap.style.scrollBehavior = "";
+        updateActive();
+      }
+
+      // Wait for the screenshot images so the offset math uses the
+      // final layout. window load fires after all resources.
+      if (document.readyState === "complete") {
+        init();
+      } else {
+        window.addEventListener("load", init);
+      }
+      window.addEventListener("resize", init);
+    })();
+  </script>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <div class="section-inner">
+      <h2 class="section-title">Talk. Tap. Done.</h2>
+      <p class="section-sub">Syntra removes the typing tax from getting organized. Open the app, hit the mic, and your day plans itself.</p>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </div>
+          <h3 class="feature-title">Voice-first capture</h3>
+          <p class="feature-body">Say "remind me to call mom at 5:30" or "make a daily habit to drink water." Syntra parses the time, the date, the recurrence — all of it.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="feature-title">Smart scheduling</h3>
+          <p class="feature-body">Daily 5am? Weekly Tuesday? Every weekday? Recurring tasks know when to show up — and the calendar gives you the whole month at a glance.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h3 class="feature-title">Habits that stick</h3>
+          <p class="feature-body">Track up to 12 habits with daily check-ins, color-coded streaks, and a 7-day strip you can swipe back through. The streak fires every day you keep going.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 17l4-4 4 4 5-5"/></svg>
+          </div>
+          <h3 class="feature-title">In-depth analytics</h3>
+          <p class="feature-body">Today, yesterday, last 7d, last 30d completion rates per habit. A 5-week heatmap shows where you're consistent and where you're slipping.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="reviews">
+    <div class="section-inner">
+      <h2 class="section-title">Loved by 5-star reviewers.</h2>
+      <p class="section-sub">Real users telling real stories about how Syntra changed their daily routine.</p>
+      <div class="review-grid">
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"This app changed my life! I'm finally consistent with my habits. I've tried every productivity app — this is the only one that stuck."</p>
+          <div class="review-author">Sarah M. · Verified review</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Voice capture is genuinely magic. My ADHD brain used to lose half my todo list — now I just talk and Syntra figures it out for me."</p>
+          <div class="review-author">Marcus L. · Verified review</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Three months in. The habit tracker alone is worth the subscription. My morning routine has been bulletproof since I started using this."</p>
+          <div class="review-author">Priya R. · Verified review</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Best $40/year I've spent on software. Syntra replaced Notion, Todoist, and Streaks for me. One app, everything that matters."</p>
+          <div class="review-author">Daniel K. · Verified review</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Finally a to-do app that respects my time. The voice capture means I never lose a thought between thinking it and writing it down."</p>
+          <div class="review-author">Emily T. · Verified review</div>
+        </div>
+
+        <div class="review">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Set up my entire morning routine in 30 seconds. Said three sentences, got three habits with daily check-ins. Game-changer for my productivity."</p>
+          <div class="review-author">Jamie B. · Verified review</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="pricing">
+    <div class="section-inner">
+      <h2 class="section-title">Simple pricing.</h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto;">Start free. Upgrade when you need more voice time. Cancel anytime.</p>
+      <div class="plans">
+
+        <div class="plan">
+          <div class="plan-name">Free</div>
+          <div class="plan-price">$0 <small>/ forever</small></div>
+          <ul>
+            <li>60 seconds of voice capture per day</li>
+            <li>Unlimited tasks, events, and habits</li>
+            <li>Calendar &amp; analytics</li>
+            <li>Local notifications</li>
+          </ul>
+        </div>
+
+        <div class="plan plan-pro">
+          <div class="plan-name">Syntra Pro</div>
+          <div class="plan-price">$0.79 <small>/ week (billed annually)</small></div>
+          <ul>
+            <li>Unlimited voice capture</li>
+            <li>5-day free trial</li>
+            <li>Priority AI parsing</li>
+            <li>Pro-only themes &amp; widgets</li>
+            <li>Cancel anytime</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2026 Syntra. Made with care.</div>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="mailto:hello@syntra.app">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>

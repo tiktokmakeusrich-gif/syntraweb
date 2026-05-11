@@ -1,0 +1,489 @@
+/* Syntra marketing site — dark, monolithic, mobile-first.
+   Mirrors the app's dark-mode tokens (bg #0E0F12, accent #2D5BFF). */
+
+:root {
+  --bg: #0E0F12;
+  --bg-elevated: #16181C;
+  --bg-recessed: #1F2126;
+  --fg: #FFFFFF;
+  --fg-secondary: rgba(235, 235, 245, 0.7);
+  --fg-tertiary: rgba(235, 235, 245, 0.4);
+  --stroke: rgba(255, 255, 255, 0.1);
+  --accent: #2D5BFF;
+  --accent-purple: #7C3AED;
+  --accent-green: #3DB47A;
+  --max-width: 1120px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ───── Header ───── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  background: rgba(14, 15, 18, 0.7);
+  border-bottom: 1px solid var(--stroke);
+}
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-weight: 800;
+  letter-spacing: 4px;
+  font-size: 22px;
+}
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 15px;
+  color: var(--fg-secondary);
+}
+.nav-links a:hover { color: var(--fg); }
+
+/* ───── Hero ───── */
+.hero {
+  padding: 96px 24px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(45, 91, 255, 0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.hero img.logo {
+  width: 116px;
+  height: 116px;
+  border-radius: 26px;
+  margin-bottom: 28px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+}
+.hero h1 {
+  font-size: clamp(40px, 7vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin: 0 0 20px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  color: var(--fg-secondary);
+  font-size: clamp(17px, 2.2vw, 21px);
+  max-width: 580px;
+  margin: 0 auto 36px;
+}
+.download-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  background: var(--bg-elevated);
+  transition: transform 120ms ease, background 120ms ease;
+}
+.store-btn:hover {
+  background: var(--bg-recessed);
+  transform: translateY(-1px);
+}
+.store-btn-text { text-align: left; line-height: 1.15; }
+.store-btn-small { font-size: 11px; color: var(--fg-secondary); letter-spacing: 0.4px; }
+.store-btn-big { font-size: 18px; font-weight: 700; }
+.store-btn svg { width: 28px; height: 28px; }
+
+/* ───── Screenshot gallery ───── */
+.screenshots-section {
+  padding: 64px 24px 96px;
+  border-top: 1px solid var(--stroke);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.screenshots-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.screenshots-arrows {
+  display: flex;
+  gap: 10px;
+}
+.scroll-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  border: 1px solid var(--stroke);
+  background: var(--bg-elevated);
+  color: var(--fg);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    border-color 160ms ease;
+}
+.scroll-arrow:hover {
+  background: var(--bg-recessed);
+  border-color: var(--accent);
+}
+.scroll-arrow:active {
+  transform: scale(0.94);
+}
+.scroll-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* The scroll viewport. We use scroll-snap-align: center so each
+   card lands centered. The infinite-scroll JS clones items and
+   silently jumps the scroll position when the user nears either
+   edge of the cloned set. */
+.screenshots-wrap {
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin: 0 -24px;
+  padding: 32px 0 48px;
+}
+.screenshots-wrap::-webkit-scrollbar { display: none; }
+
+/* Track. The padding here is what lets the FIRST and LAST cards
+   reach the center of the viewport — without it they could only
+   scroll-snap to the viewport edge. */
+.screenshots {
+  display: inline-flex;
+  gap: 32px;
+  padding: 0 calc(50% - 160px);
+  align-items: center;
+}
+
+/* Each card: phone frame on top + title + description below. By
+   default cards are scaled down + blurred (peek state). Only the
+   one with .active drops the blur and scales up — which is the
+   center card whichever one that happens to be after a scroll. */
+.phone-card {
+  flex: 0 0 320px;
+  margin: 0;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Peek state */
+  transform: scale(0.78);
+  filter: blur(6px) brightness(0.65);
+  opacity: 0.55;
+  transition:
+    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, filter, opacity;
+}
+.phone-card.active {
+  transform: scale(1);
+  filter: blur(0px) brightness(1);
+  opacity: 1;
+}
+.phone-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+.phone-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--fg-secondary);
+  text-align: center;
+  /* Description fades in only on the active card so the side
+     peeks read as visual context, not crowded reading material. */
+  opacity: 0;
+  transition: opacity 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.phone-card.active p { opacity: 1; }
+
+/* iPhone-shaped frame. The screenshot inside fills the frame edge-
+   to-edge with only a tiny 4px padding for the rounded-corner
+   nesting; the frame itself is just a hairline border + glow.
+   Result: no visible "bezel band" around the screenshot. */
+.phone {
+  width: 100%;
+  border-radius: 44px;
+  background: var(--bg);
+  border: 1px solid var(--stroke);
+  padding: 4px;
+  box-shadow:
+    0 60px 120px -30px rgba(45, 91, 255, 0.22),
+    0 30px 60px -20px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+/* No CSS-drawn notch — the actual screenshots already include the
+   iOS status bar / notch in the PNG itself, so an extra overlay
+   would just sit on top and look redundant. */
+.phone-shot img {
+  width: 100%;
+  /* Aspect ratio matches the cropped screenshots (status bar removed)
+     so app content fills the frame edge-to-edge with no empty top
+     band. Slight per-image variation (~9:18.2-18.5) is absorbed by
+     object-fit: cover. */
+  aspect-ratio: 9 / 18.3;
+  object-fit: cover;
+  object-position: top;
+  /* Inner radius = outer radius (44) minus padding (4) so the
+     screenshot's rounded corners nest cleanly inside the bezel. */
+  border-radius: 40px;
+  display: block;
+  background: var(--bg);
+}
+
+/* Tablet — slightly smaller phones, less padding. */
+@media (max-width: 880px) {
+  .screenshots { padding: 0 calc(50% - 140px); gap: 24px; }
+  .phone-card { flex-basis: 280px; }
+}
+
+/* Mobile — single card centered, side peeks visible only as a hint
+   of the next card on the right edge. */
+@media (max-width: 540px) {
+  .screenshots-section { padding: 48px 20px 64px; }
+  .screenshots { padding: 0 calc(50% - 110px); gap: 20px; }
+  .phone-card { flex-basis: 220px; }
+  .screenshots-arrows { display: none; }
+}
+
+/* ───── Features ───── */
+section.features {
+  padding: 80px 24px;
+  border-top: 1px solid var(--stroke);
+}
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.section-title {
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+.section-sub {
+  color: var(--fg-secondary);
+  font-size: 18px;
+  margin: 0 0 56px;
+  max-width: 600px;
+}
+.features-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.feature-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  padding: 28px;
+}
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(45, 91, 255, 0.18);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.feature-icon svg { width: 24px; height: 24px; }
+.feature-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.feature-body {
+  color: var(--fg-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ───── Reviews ───── */
+section.reviews {
+  padding: 80px 24px;
+  border-top: 1px solid var(--stroke);
+  background: linear-gradient(180deg, transparent 0%, rgba(45, 91, 255, 0.04) 100%);
+}
+.review-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.review {
+  background: var(--bg-elevated);
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 24px;
+}
+.review-stars { color: #F5C518; font-size: 16px; letter-spacing: 2px; margin-bottom: 10px; }
+.review-text { font-size: 16px; line-height: 1.55; margin: 0 0 14px; }
+.review-author { font-size: 14px; color: var(--fg-tertiary); }
+
+/* ───── Pricing ───── */
+section.pricing {
+  padding: 80px 24px;
+  border-top: 1px solid var(--stroke);
+  text-align: center;
+}
+.plans {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  max-width: 720px;
+  margin: 0 auto;
+}
+.plan {
+  background: var(--bg-elevated);
+  border: 1px solid var(--stroke);
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: left;
+}
+.plan-pro {
+  border-color: var(--accent);
+  background: linear-gradient(170deg, rgba(45,91,255,0.12), var(--bg-elevated));
+}
+.plan-name { font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--fg-tertiary); }
+.plan-price { font-size: 36px; font-weight: 800; margin: 8px 0 14px; letter-spacing: -0.02em; }
+.plan-price small { font-size: 14px; color: var(--fg-secondary); font-weight: 500; letter-spacing: 0; }
+.plan ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+  color: var(--fg-secondary);
+}
+.plan ul li { padding: 6px 0; padding-left: 22px; position: relative; }
+.plan ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  color: var(--accent-green);
+  font-weight: 700;
+}
+
+/* ───── Footer ───── */
+footer {
+  padding: 48px 24px 64px;
+  border-top: 1px solid var(--stroke);
+  text-align: center;
+  color: var(--fg-tertiary);
+  font-size: 14px;
+}
+footer .links {
+  margin-top: 12px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+footer .links a:hover { color: var(--fg); }
+
+/* ───── Legal pages ───── */
+.legal {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+.legal h1 {
+  font-size: 40px;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+.legal p.updated {
+  color: var(--fg-tertiary);
+  margin: 0 0 32px;
+  font-size: 14px;
+}
+.legal h2 {
+  font-size: 22px;
+  margin: 36px 0 12px;
+  letter-spacing: -0.01em;
+}
+.legal p, .legal li {
+  color: var(--fg-secondary);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.legal ul { padding-left: 22px; }
+.legal a { color: var(--accent); }
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--fg-secondary);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+.back:hover { color: var(--fg); }
+
+/* ───── Mobile tweaks ───── */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hero { padding: 64px 20px 32px; }
+  .preview { padding: 16px 20px 64px; }
+  .phone { transform: scale(0.92); }
+  section { padding: 64px 20px !important; }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Syntra</title>
+  <meta name="theme-color" content="#0E0F12" />
+  <link rel="icon" href="syntra-logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span>SYNTRA</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="index.html#pricing">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="legal">
+    <a href="index.html" class="back">← Back to home</a>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: May 9, 2026 · Effective: May 9, 2026</p>
+
+    <p>This Privacy Policy describes how Syntra ("we", "us", or "our") collects, uses, and shares information about you when you use our mobile application Syntra (the "Service"). By using the Service, you agree to this policy.</p>
+
+    <p><strong>Who we are:</strong> Syntra is operated by an independent developer based in the United States. For privacy questions, contact <a href="mailto:hello@syntra.app">hello@syntra.app</a>.</p>
+
+    <h2>1. Information we collect</h2>
+    <p>We collect the following categories of information when you use Syntra:</p>
+    <ul>
+      <li><strong>Voice recordings.</strong> When you tap the microphone, Syntra captures audio on your device and sends it to our voice-parsing service for transcription. Audio is processed and discarded; we do not retain raw recordings beyond the parse round-trip.</li>
+      <li><strong>Task, event, and habit data.</strong> Items you create — titles, dates, recurrence rules, completion timestamps, soft-delete status — are stored on your device and, if you sign in, synced to our database so they survive a reinstall and roam between devices.</li>
+      <li><strong>Account information.</strong> If you sign in, we collect your email address (or Apple Sign-In identifier) and a hashed authentication token. We do <em>not</em> see or store your password if you sign in via Apple.</li>
+      <li><strong>Technical identifiers.</strong> When the app talks to our servers, our hosting provider records the device IP address and a coarse device identifier (Apple's IDFV — vendor-specific, not advertising-related) for security, abuse prevention, and rate limiting. These logs are kept for up to 30 days and then purged.</li>
+      <li><strong>Subscription / receipt data.</strong> If you purchase Syntra Pro, the App Store or Google Play sends us a receipt token confirming your subscription status. We do <strong>not</strong> see your credit card number, billing address, or any other payment details — those stay with Apple or Google.</li>
+      <li><strong>Diagnostic data.</strong> Anonymized crash reports and basic usage events (which screens were viewed, error rates) so we can fix bugs and improve the product. No personally identifying content is included.</li>
+    </ul>
+    <p>We do <strong>not</strong> use the App Tracking Transparency framework, do not track you across other apps or websites, and show no third-party advertising in Syntra.</p>
+
+    <h2>2. Third parties we share with</h2>
+    <p>Syntra relies on a small set of vendors to deliver the Service:</p>
+    <ul>
+      <li><strong>Google (Gemini API).</strong> Voice recordings and the immediate parse context (your existing item titles and IDs, so the AI can reference them) are sent to Google's Gemini API to convert speech to structured commands. Google's data handling is governed by their <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</li>
+      <li><strong>Apple (Speech framework).</strong> While the microphone is open, Syntra uses Apple's on-device speech recognition framework to render a live transcript on screen. On supported devices and languages this happens entirely on-device; for unsupported locales iOS may briefly send audio to Apple's servers. Syntra never receives or stores this transcript independently — it is purely a UI element.</li>
+      <li><strong>Supabase.</strong> If you sign in, your tasks, events, and habits are stored in our Supabase database for sync. Supabase processes this data on our behalf as a sub-processor under a Data Processing Agreement.</li>
+      <li><strong>Apple / Google.</strong> Subscription billing, push notifications, and crash analytics are handled by Apple (App Store / iOS) and Google (Google Play / Android) per their published privacy practices.</li>
+    </ul>
+    <p>We do <strong>not</strong> sell or rent your personal information, and we do not share it for cross-context behavioral advertising.</p>
+
+    <h2>3. How we use your information</h2>
+    <ul>
+      <li>To run the voice-to-task pipeline that is the core feature of Syntra.</li>
+      <li>To sync your data across devices when you're signed in.</li>
+      <li>To deliver notifications you've configured (reminders, habit nudges).</li>
+      <li>To prevent abuse (rate limiting, fraud detection).</li>
+      <li>To diagnose crashes and improve the app over time.</li>
+      <li>To process subscription billing and entitlement validation.</li>
+    </ul>
+
+    <h2>4. Legal basis for processing (EU / UK users)</h2>
+    <p>If you are in the European Economic Area, the United Kingdom, or Switzerland, we process your personal data on the following legal bases under Article 6 of the GDPR (and the UK GDPR):</p>
+    <ul>
+      <li><strong>Performance of a contract</strong> (Art. 6(1)(b)) — to deliver the Service you've signed up for: voice parsing, sync, notifications, subscription entitlement.</li>
+      <li><strong>Legitimate interests</strong> (Art. 6(1)(f)) — for diagnostic data, security and abuse prevention, and for improving the product. We have weighed these interests against your rights and consider them not overridden.</li>
+      <li><strong>Consent</strong> (Art. 6(1)(a)) — when you explicitly grant microphone permission, speech-recognition permission, notification permission, or sign-in. You can withdraw consent at any time from device Settings or by deleting the app.</li>
+      <li><strong>Legal obligation</strong> (Art. 6(1)(c)) — to comply with applicable law, including responses to lawful requests from authorities.</li>
+    </ul>
+
+    <h2>5. International data transfers</h2>
+    <p>Syntra operates globally. Information we collect may be transferred to, stored, and processed in the United States or other countries where our service providers (Google, Supabase, Apple, etc.) operate. These countries may have data-protection laws that differ from those in your country.</p>
+    <p>For transfers from the EEA, UK, or Switzerland to countries the European Commission has not deemed to provide adequate protection, we rely on the European Commission's <strong>Standard Contractual Clauses (2021/914)</strong> and any additional safeguards required by applicable law. Where a sub-processor participates in the <strong>EU-U.S. Data Privacy Framework</strong>, we may also rely on that framework. Copies of the relevant SCCs are available on request.</p>
+
+    <h2>6. Data retention</h2>
+    <p>If you sign in, your task and habit data is retained until you delete it (deleted items are soft-deleted for 30 days, then permanently purged) or until you delete your account. Voice recordings are not retained — they are processed by Google and discarded as part of the parse request. Server access logs (IP, IDFV) are retained for up to 30 days and then deleted on a rolling basis.</p>
+    <p>If you use Syntra without signing in, all data lives only on your device. Uninstalling the app deletes everything we ever held about you.</p>
+
+    <h2>7. Your rights</h2>
+    <p>You have the following rights, regardless of where you live:</p>
+    <ul>
+      <li><strong>Access.</strong> Get a copy of the personal data we hold about you.</li>
+      <li><strong>Correction.</strong> Correct inaccurate data.</li>
+      <li><strong>Deletion.</strong> Delete individual items from inside the app, or delete your entire account from <em>Settings → Account → Delete Account</em>. You can also email <a href="mailto:hello@syntra.app">hello@syntra.app</a> to request deletion; we will action the request within 30 days.</li>
+      <li><strong>Data portability.</strong> Export your data in a machine-readable format (JSON) from <em>Settings → Privacy &amp; Data → Export</em>.</li>
+      <li><strong>Restriction.</strong> Ask us to restrict how we process your data.</li>
+      <li><strong>Objection.</strong> Object to processing based on legitimate interests.</li>
+    </ul>
+    <p><strong>EU / UK / Swiss residents (GDPR):</strong> you also have the right to lodge a complaint with your local data-protection authority.</p>
+    <p><strong>California residents (CCPA / CPRA):</strong> you have the right to know what categories and specific pieces of personal information we collect, the right to delete personal information we have collected (subject to lawful exceptions), the right to correct inaccurate information, the right to opt out of the "sale" or "sharing" of personal information (we don't sell or share for advertising), and the right not to be discriminated against for exercising these rights.</p>
+    <p>To exercise any right, email <a href="mailto:hello@syntra.app">hello@syntra.app</a> from the address associated with your account, or use the in-app controls referenced above.</p>
+
+    <h2>8. Children</h2>
+    <p>Syntra is not directed to children under 13 (or 16 in the EU/UK), and we do not knowingly collect personal information from anyone under those ages. If you believe a child has provided us with personal information, contact us and we will delete it.</p>
+
+    <h2>9. Security</h2>
+    <p>We use TLS for all network traffic, encrypted storage at rest with our database provider, principle-of-least-privilege access controls on engineering tooling, and minimize the data we hold so that any incident remains contained. No system is perfectly secure; we'll notify affected users and the relevant authorities of any breach involving personal data within 72 hours of discovery, as required by law.</p>
+
+    <h2>10. Do Not Track signals</h2>
+    <p>Syntra does not respond to web "Do Not Track" signals because Syntra is a mobile app, not a website. We do not engage in the kind of cross-site tracking these signals were designed to prevent.</p>
+
+    <h2>11. Changes to this policy</h2>
+    <p>We will update this policy as the Service evolves. Material changes will be announced in-app and via email if you have an account. The "Last updated" date at the top of this page indicates when the policy was last revised. Continued use of the Service after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>12. Contact</h2>
+    <p>Privacy questions, requests, or complaints? Email <a href="mailto:hello@syntra.app">hello@syntra.app</a>. We aim to respond within 7 business days; GDPR / CCPA requests within 30 days as required by law.</p>
+  </main>
+
+  <footer>
+    <div>© 2026 Syntra. Made with care.</div>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="mailto:hello@syntra.app">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
