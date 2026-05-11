@@ -486,4 +486,45 @@ footer .links a:hover { color: var(--fg); }
   .preview { padding: 16px 20px 64px; }
   .phone { transform: scale(0.92); }
   section { padding: 64px 20px !important; }
+
+  /* Features: lock into a 2×2 box on phones instead of a vertical
+     stack. Cards shrink + reduce padding so they actually fit. */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .feature-card {
+    padding: 18px 14px;
+  }
+  .feature-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .feature-icon svg { width: 18px; height: 18px; }
+  .feature-title { font-size: 15px; margin-bottom: 6px; }
+  .feature-body { font-size: 12.5px; line-height: 1.45; }
+
+  /* Reviews: swap the grid for a horizontal scroll-snap carousel
+     so reviews appear one at a time and the user swipes through
+     them. Edge bleed lets the next review peek to signal "swipe".
+     The negative margin escapes the section padding so the
+     carousel goes edge-to-edge. */
+  .review-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 20px;
+    margin: 0 -20px;
+  }
+  .review-grid::-webkit-scrollbar { display: none; }
+  .review {
+    flex: 0 0 calc(100% - 40px);
+    scroll-snap-align: center;
+  }
 }
