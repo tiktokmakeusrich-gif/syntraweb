@@ -365,20 +365,17 @@ section.reviews {
   border-top: 1px solid var(--stroke);
   background: linear-gradient(180deg, transparent 0%, rgba(45, 91, 255, 0.04) 100%);
 }
-.review-grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-.review {
+.reviews-soon {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
   background: var(--bg-elevated);
   border: 1px solid var(--stroke);
   border-radius: 16px;
-  padding: 24px;
+  padding: 40px 28px;
 }
-.review-stars { color: #F5C518; font-size: 16px; letter-spacing: 2px; margin-bottom: 10px; }
-.review-text { font-size: 16px; line-height: 1.55; margin: 0 0 14px; }
-.review-author { font-size: 14px; color: var(--fg-tertiary); }
+.reviews-soon-stars { color: #F5C518; font-size: 22px; letter-spacing: 4px; margin-bottom: 16px; }
+.reviews-soon-text { font-size: 16px; line-height: 1.55; margin: 0; color: var(--fg-secondary); }
 
 /* ───── Pricing ───── */
 section.pricing {
@@ -506,25 +503,8 @@ footer .links a:hover { color: var(--fg); }
   .feature-title { font-size: 15px; margin-bottom: 6px; }
   .feature-body { font-size: 12.5px; line-height: 1.45; }
 
-  /* Reviews: swap the grid for a horizontal scroll-snap carousel
-     so reviews appear one at a time and the user swipes through
-     them. Edge bleed lets the next review peek to signal "swipe".
-     The negative margin escapes the section padding so the
-     carousel goes edge-to-edge. */
-  .review-grid {
-    display: flex;
-    grid-template-columns: none;
-    gap: 14px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 4px 20px;
-    margin: 0 -20px;
-  }
-  .review-grid::-webkit-scrollbar { display: none; }
-  .review {
-    flex: 0 0 calc(100% - 40px);
-    scroll-snap-align: center;
-  }
+  /* Reviews "coming soon" card */
+  .reviews-soon { padding: 32px 22px; }
+  .reviews-soon-stars { font-size: 20px; }
+  .reviews-soon-text { font-size: 14.5px; }
 }
