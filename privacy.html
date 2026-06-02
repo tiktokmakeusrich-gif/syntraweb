@@ -26,7 +26,7 @@
   <main class="legal">
     <a href="index.html" class="back">← Back to home</a>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: May 9, 2026 · Effective: May 9, 2026</p>
+    <p class="updated">Last updated: June 2, 2026 · Effective: June 2, 2026</p>
 
     <p>This Privacy Policy describes how Syntra ("we", "us", or "our") collects, uses, and shares information about you when you use our mobile application Syntra (the "Service"). By using the Service, you agree to this policy.</p>
 
@@ -36,7 +36,7 @@
     <p>We collect the following categories of information when you use Syntra:</p>
     <ul>
       <li><strong>Voice recordings.</strong> When you tap the microphone, Syntra captures audio on your device and sends it to our voice-parsing service for transcription. Audio is processed and discarded; we do not retain raw recordings beyond the parse round-trip.</li>
-      <li><strong>Task, event, and habit data.</strong> Items you create — titles, dates, recurrence rules, completion timestamps, soft-delete status — are stored on your device and, if you sign in, synced to our database so they survive a reinstall and roam between devices.</li>
+      <li><strong>Task, event, and habit data.</strong> Items you create — titles, dates, recurrence rules, completion timestamps — are stored only on your device. They are not uploaded to our servers and do not sync across devices; uninstalling the app deletes them.</li>
       <li><strong>Account information.</strong> If you sign in, we collect your email address (or Apple Sign-In identifier) and a hashed authentication token. We do <em>not</em> see or store your password if you sign in via Apple.</li>
       <li><strong>Technical identifiers.</strong> When the app talks to our servers, our hosting provider records the device IP address and a coarse device identifier (Apple's IDFV — vendor-specific, not advertising-related) for security, abuse prevention, and rate limiting. These logs are kept for up to 30 days and then purged.</li>
       <li><strong>Subscription / receipt data.</strong> If you purchase Syntra Pro, the App Store or Google Play sends us a receipt token confirming your subscription status. We do <strong>not</strong> see your credit card number, billing address, or any other payment details — those stay with Apple or Google.</li>
@@ -49,7 +49,7 @@
     <ul>
       <li><strong>Google (Gemini API).</strong> Voice recordings and the immediate parse context (your existing item titles and IDs, so the AI can reference them) are sent to Google's Gemini API to convert speech to structured commands. Google's data handling is governed by their <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</li>
       <li><strong>Apple (Speech framework).</strong> While the microphone is open, Syntra uses Apple's on-device speech recognition framework to render a live transcript on screen. On supported devices and languages this happens entirely on-device; for unsupported locales iOS may briefly send audio to Apple's servers. Syntra never receives or stores this transcript independently — it is purely a UI element.</li>
-      <li><strong>Supabase.</strong> If you sign in, your tasks, events, and habits are stored in our Supabase database for sync. Supabase processes this data on our behalf as a sub-processor under a Data Processing Agreement.</li>
+      <li><strong>Supabase.</strong> If you sign in, your account record (email or Apple Sign-In identifier) and subscription status are stored in our Supabase database for authentication and billing. Your tasks, events, and habits are not stored there — they stay on your device. Supabase processes this account data on our behalf as a sub-processor under a Data Processing Agreement.</li>
       <li><strong>Apple / Google.</strong> Subscription billing, push notifications, and crash analytics are handled by Apple (App Store / iOS) and Google (Google Play / Android) per their published privacy practices.</li>
     </ul>
     <p>We do <strong>not</strong> sell or rent your personal information, and we do not share it for cross-context behavioral advertising.</p>
@@ -57,7 +57,7 @@
     <h2>3. How we use your information</h2>
     <ul>
       <li>To run the voice-to-task pipeline that is the core feature of Syntra.</li>
-      <li>To sync your data across devices when you're signed in.</li>
+      <li>To keep you signed in across launches and validate your subscription.</li>
       <li>To deliver notifications you've configured (reminders, habit nudges).</li>
       <li>To prevent abuse (rate limiting, fraud detection).</li>
       <li>To diagnose crashes and improve the app over time.</li>
@@ -78,7 +78,7 @@
     <p>For transfers from the EEA, UK, or Switzerland to countries the European Commission has not deemed to provide adequate protection, we rely on the European Commission's <strong>Standard Contractual Clauses (2021/914)</strong> and any additional safeguards required by applicable law. Where a sub-processor participates in the <strong>EU-U.S. Data Privacy Framework</strong>, we may also rely on that framework. Copies of the relevant SCCs are available on request.</p>
 
     <h2>6. Data retention</h2>
-    <p>If you sign in, your task and habit data is retained until you delete it (deleted items are soft-deleted for 30 days, then permanently purged) or until you delete your account. Voice recordings are not retained — they are processed by Google and discarded as part of the parse request. Server access logs (IP, IDFV) are retained for up to 30 days and then deleted on a rolling basis.</p>
+    <p>Your task and habit data lives on your device and is retained until you delete it in the app or uninstall. If you have an account, your account record and subscription status are retained until you delete your account. Voice recordings are not retained — they are processed by Google and discarded as part of the parse request. Server access logs (IP, IDFV) are retained for up to 30 days and then deleted on a rolling basis.</p>
     <p>If you use Syntra without signing in, all data lives only on your device. Uninstalling the app deletes everything we ever held about you.</p>
 
     <h2>7. Your rights</h2>
@@ -86,8 +86,8 @@
     <ul>
       <li><strong>Access.</strong> Get a copy of the personal data we hold about you.</li>
       <li><strong>Correction.</strong> Correct inaccurate data.</li>
-      <li><strong>Deletion.</strong> Delete individual items from inside the app, or delete your entire account from <em>Settings → Account → Delete Account</em>. You can also email <a href="mailto:hello@syntra.app">hello@syntra.app</a> to request deletion; we will action the request within 30 days.</li>
-      <li><strong>Data portability.</strong> Export your data in a machine-readable format (JSON) from <em>Settings → Privacy &amp; Data → Export</em>.</li>
+      <li><strong>Deletion.</strong> Delete individual items from inside the app, or delete your entire account from <em>Settings → Privacy &amp; Data → Delete account</em>. You can also email <a href="mailto:hello@syntra.app">hello@syntra.app</a> to request deletion; we will action the request within 30 days.</li>
+      <li><strong>Data portability.</strong> Request a machine-readable copy of your data by emailing <a href="mailto:hello@syntra.app">hello@syntra.app</a>; we will provide it within 30 days.</li>
       <li><strong>Restriction.</strong> Ask us to restrict how we process your data.</li>
       <li><strong>Objection.</strong> Object to processing based on legitimate interests.</li>
     </ul>
