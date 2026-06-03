@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Syntra — capture tasks by voice, build habits that stick. AI-powered productivity for iOS." />
+  <meta name="description" content="Syntra: capture tasks by voice, build habits that stick. AI-powered productivity for iOS." />
   <meta name="theme-color" content="#0E0F12" />
   <title>Syntra — Voice-first tasks, habits, and events</title>
   <link rel="icon" href="syntra-logo.png" type="image/png" />
@@ -75,7 +75,7 @@
             <img src="screenshots/mic.png?v=4" alt="Voice capture screen" />
           </div>
           <h3>Voice capture</h3>
-          <p>Just talk. Syntra hears "remind me to call mom at 5:30" and turns it into a real reminder — no typing needed.</p>
+          <p>Just talk. Syntra hears "remind me to call mom at 5:30" and turns it into a real reminder, no typing needed.</p>
         </figure>
         <figure class="phone-card">
           <div class="phone phone-shot">
@@ -96,21 +96,21 @@
             <img src="screenshots/habits.png?v=4" alt="Habit tracker with streaks" />
           </div>
           <h3>Habits &amp; streaks</h3>
-          <p>Track up to a dozen habits with daily check-ins. The 7-day strip on each card shows your last week at a glance — color-coded so they don't blur together.</p>
+          <p>Track up to a dozen habits with daily check-ins. The 7-day strip on each card shows your last week at a glance, color-coded so they don't blur together.</p>
         </figure>
         <figure class="phone-card">
           <div class="phone phone-shot">
             <img src="screenshots/analytics.png?v=4" alt="Habit analytics" />
           </div>
           <h3>Habit analytics</h3>
-          <p>Today, yesterday, last 7 days, last 30 days — see exactly how often each habit fires. The 30-day grid surfaces patterns and slip-ups you'd otherwise miss.</p>
+          <p>Today, yesterday, last 7 days, last 30 days. See exactly how often each habit fires. The 30-day grid surfaces patterns and slip-ups you'd otherwise miss.</p>
         </figure>
         <figure class="phone-card">
           <div class="phone phone-shot">
             <img src="screenshots/widgets.png?v=4" alt="Home screen widgets" />
           </div>
           <h3>Home screen widgets</h3>
-          <p>Keep Syntra one glance away. Drop your to-dos, today's habit progress, and a tap-to-capture mic right on your home screen — no need to open the app.</p>
+          <p>Keep Syntra one glance away. Drop your to-dos, today's habit progress, and a tap-to-capture mic right on your home screen, no need to open the app.</p>
         </figure>
       </div>
     </div>
@@ -138,8 +138,12 @@
       var ORIGINALS = Array.prototype.slice.call(track.children);
       var N = ORIGINALS.length;
 
-      // Clone twice → 3 batches.
-      for (var copy = 0; copy < 2; copy++) {
+      // Clone four times → 5 batches. More batches = more runway, so
+      // a fast fling can't reach the physical scroll edge before the
+      // silent recenter fires. We anchor on the MIDDLE (3rd) batch.
+      var BATCHES = 5;
+      var MID = 2; // index of the centered batch (0-based)
+      for (var copy = 0; copy < BATCHES - 1; copy++) {
         ORIGINALS.forEach(function (el) {
           track.appendChild(el.cloneNode(true));
         });
@@ -158,32 +162,30 @@
         return card.offsetLeft - wrap.clientWidth / 2 + card.clientWidth / 2;
       }
 
-      // ─── Infinite-loop boundary jumps ───
+      // ─── Infinite-loop recenter ───
+      // Whenever the scroll drifts a full batch (or more) away from
+      // the anchored middle batch, snap it back by a whole number of
+      // batch-widths in ONE correction. Using Math.round means even a
+      // very fast fling that overshoots several batches is corrected
+      // cleanly in a single step, instead of stuttering one batch at a
+      // time (which is what caused the glitch).
       var isJumping = false;
       function maybeJump() {
         if (isJumping) return;
         var bw = batchWidth();
         if (!bw) return;
-        var middleStart = targetForCard(allCards[N]);
+        var anchor = targetForCard(allCards[MID * N]);
         var x = wrap.scrollLeft;
-        if (x < middleStart - bw * 0.5) {
-          isJumping = true;
-          // Disable smooth-scroll for the jump itself.
-          wrap.style.scrollBehavior = "auto";
-          wrap.scrollLeft = x + bw;
-          requestAnimationFrame(function () {
-            wrap.style.scrollBehavior = "";
-            isJumping = false;
-          });
-        } else if (x > middleStart + bw * 0.5) {
-          isJumping = true;
-          wrap.style.scrollBehavior = "auto";
-          wrap.scrollLeft = x - bw;
-          requestAnimationFrame(function () {
-            wrap.style.scrollBehavior = "";
-            isJumping = false;
-          });
-        }
+        var k = Math.round((x - anchor) / bw);
+        if (k === 0) return;
+        isJumping = true;
+        // Disable smooth-scroll for the instant, invisible jump.
+        wrap.style.scrollBehavior = "auto";
+        wrap.scrollLeft = x - k * bw;
+        requestAnimationFrame(function () {
+          wrap.style.scrollBehavior = "";
+          isJumping = false;
+        });
       }
 
       // ─── Active-card detection ───
@@ -229,9 +231,9 @@
       // ─── Init ───
       function init() {
         if (allCards.length <= N) return;
-        // Land on first card of middle batch.
+        // Land on the first card of the anchored middle batch.
         wrap.style.scrollBehavior = "auto";
-        wrap.scrollLeft = targetForCard(allCards[N]);
+        wrap.scrollLeft = targetForCard(allCards[MID * N]);
         wrap.style.scrollBehavior = "";
         updateActive();
       }
@@ -259,7 +261,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
           </div>
           <h3 class="feature-title">Voice-first capture</h3>
-          <p class="feature-body">Say "remind me to call mom at 5:30" or "make a daily habit to drink water." Syntra parses the time, the date, the recurrence — all of it.</p>
+          <p class="feature-body">Say "remind me to call mom at 5:30" or "make a daily habit to drink water." Syntra parses the time, the date, the recurrence, all of it.</p>
         </div>
 
         <div class="feature-card">
@@ -267,7 +269,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
           <h3 class="feature-title">Smart scheduling</h3>
-          <p class="feature-body">Daily 5am? Weekly Tuesday? Every weekday? Recurring tasks know when to show up — and the calendar gives you the whole month at a glance.</p>
+          <p class="feature-body">Daily 5am? Weekly Tuesday? Every weekday? Recurring tasks know when to show up, and the calendar gives you the whole month at a glance.</p>
         </div>
 
         <div class="feature-card">
@@ -297,7 +299,7 @@
       <p class="section-sub">We just launched. Real reviews from real users will land here soon.</p>
       <div class="reviews-soon">
         <div class="reviews-soon-stars">★★★★★</div>
-        <p class="reviews-soon-text">Been using Syntra? We'd love to hear from you — your review could be the first one featured here.</p>
+        <p class="reviews-soon-text">Been using Syntra? We'd love to hear from you, and your review could be the first one featured here.</p>
       </div>
     </div>
   </section>
